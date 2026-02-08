@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocuMind - AI Document Assistant</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🧠 DocuMind</h1>
+            <p>Your AI-powered document assistant</p>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Upload Section -->
+            <section class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">📁</div>
+                    <h3>Upload Documents</h3>
+                    <p>Drag & drop files here or click to browse</p>
+                    <p class="file-types">Supports: PDF, TXT, MD</p>
+                    <input type="file" id="fileInput" multiple accept=".pdf,.txt,.md" hidden>
+                </div>
+                <div class="upload-status" id="uploadStatus"></div>
+            </section>
+
+            <!-- Chat Section -->
+            <section class="chat-section">
+                <div class="chat-container">
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="welcome-message">
+                            <h2>👋 Welcome to DocuMind!</h2>
+                            <p>Upload documents and ask me anything about them.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-input-container">
+                        <input 
+                            type="text" 
+                            id="queryInput" 
+                            placeholder="Ask me anything about your documents..." 
+                            disabled
+                        >
+                        <button id="sendButton" disabled>
+                            <span>Send</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
