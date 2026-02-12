@@ -1,4 +1,5 @@
-#DocuMind - AI Document Assistant
+DocuMind 
+AI Document Assistant
 
 An intelligent document assistant powered by Retrieval-Augmented Generation (RAG). Upload documents and ask natural language questions to get AI-powered answers with source citations.
 
