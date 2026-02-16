@@ -16,7 +16,7 @@ class Settings(BaseSettings):
     # OpenAI API Configuration
     OPENAI_API_KEY: str
     EMBEDDING_MODEL: str = "text-embedding-3-small"
-    EMBEDDING_DIMENSION: int = 1600
+    EMBEDDING_DIMENSION: int = 1536
     LLM_MODEL: str = "gpt-4o-mini"
 
     # Chunking Parameters
