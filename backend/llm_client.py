@@ -1,7 +1,8 @@
 from openai import OpenAI
 from typing import List
-from config import settings
-from prompts import SYSTEM_PROMPT, USER_PROMPT_TEMPLATE
+from backend.config import settings
+from backend.prompts import SYSTEM_PROMPT, USER_PROMPT_TEMPLATE
+
 
 
 class LLMClient:
