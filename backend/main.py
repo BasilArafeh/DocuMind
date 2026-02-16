@@ -6,11 +6,12 @@ from fastapi.responses import FileResponse
 from typing import List
 import os
 from pathlib import Path
-from config import settings
-from schemas import QueryRequest, QueryResponse, StatsResponse, ProcessedDocument
-from ingestion import extract_pdf_text, chunk_text, generate_embeddings, process_document
-from vector_store import VectorStore
-from llm_client import LLMClient
+from backend.config import settings
+from backend.schemas import QueryRequest, QueryResponse, StatsResponse, ProcessedDocument
+from backend.ingestion import extract_pdf_text, chunk_text, generate_embeddings, process_document
+from backend.vector_store import VectorStore
+from backend.llm_client import LLMClient
+
 
 # Initialize FastAPI app
 app = FastAPI(
