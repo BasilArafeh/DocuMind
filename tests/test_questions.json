@@ -1,0 +1,109 @@
+{
+  "test_cases": [
+    {
+      "id": 1,
+      "question": "What is the main purpose of a transformer?",
+      "expected_keywords": ["attention", "sequence", "representation", "neural network"],
+      "difficulty": "easy",
+      "category": "architecture"
+    },
+    {
+      "id": 2,
+      "question": "What are the three key matrices used in self-attention?",
+      "expected_keywords": ["query", "key", "value", "Q", "K", "V"],
+      "difficulty": "easy",
+      "category": "attention"
+    },
+    {
+      "id": 3,
+      "question": "Who wrote the paper 'Attention is All You Need'?",
+      "expected_keywords": ["Vaswani", "2017"],
+      "difficulty": "easy",
+      "category": "history"
+    },
+    {
+      "id": 4,
+      "question": "What is multi-head attention?",
+      "expected_keywords": ["multiple", "parallel", "heads", "attention", "different"],
+      "difficulty": "medium",
+      "category": "attention"
+    },
+    {
+      "id": 5,
+      "question": "How does self-attention compute relationships between tokens?",
+      "expected_keywords": ["dot product", "similarity", "weighted", "softmax"],
+      "difficulty": "medium",
+      "category": "attention"
+    },
+    {
+      "id": 6,
+      "question": "What is the purpose of positional encoding in transformers?",
+      "expected_keywords": ["position", "order", "sequence", "location"],
+      "difficulty": "medium",
+      "category": "architecture"
+    },
+    {
+      "id": 7,
+      "question": "What is layer normalization and why is it used?",
+      "expected_keywords": ["normalize", "mean", "standard deviation", "training", "stable"],
+      "difficulty": "medium",
+      "category": "architecture"
+    },
+    {
+      "id": 8,
+      "question": "What are residual connections in transformers?",
+      "expected_keywords": ["skip", "add", "gradient", "identity", "flow"],
+      "difficulty": "medium",
+      "category": "architecture"
+    },
+    {
+      "id": 9,
+      "question": "How do transformers handle long-range dependencies?",
+      "expected_keywords": ["attention", "all", "tokens", "distance", "context"],
+      "difficulty": "hard",
+      "category": "attention"
+    },
+    {
+      "id": 10,
+      "question": "What is the feedforward network in a transformer block?",
+      "expected_keywords": ["MLP", "two", "layer", "hidden", "ReLU"],
+      "difficulty": "medium",
+      "category": "architecture"
+    },
+    {
+      "id": 11,
+      "question": "Why is attention scaled by the square root of dimension?",
+      "expected_keywords": ["numerical", "stability", "gradient", "softmax", "large"],
+      "difficulty": "hard",
+      "category": "attention"
+    },
+    {
+      "id": 12,
+      "question": "What is causal masking in transformers?",
+      "expected_keywords": ["mask", "future", "autoregressive", "upper", "triangular"],
+      "difficulty": "hard",
+      "category": "attention"
+    },
+    {
+      "id": 13,
+      "question": "What is the computational complexity of self-attention?",
+      "expected_keywords": ["quadratic", "N squared", "O(N^2)", "sequence length"],
+      "difficulty": "hard",
+      "category": "complexity"
+    },
+    {
+      "id": 14,
+      "question": "What are tokens in the context of transformers?",
+      "expected_keywords": ["embeddings", "words", "sub-words", "pieces", "input"],
+      "difficulty": "easy",
+      "category": "basics"
+    },
+    {
+      "id": 15,
+      "question": "What is the difference between encoder and decoder transformers?",
+      "expected_keywords": ["bidirectional", "causal", "attention", "generation", "understanding"],
+      "difficulty": "hard",
+      "category": "architecture"
+    }
+  ]
+}
