@@ -4,7 +4,7 @@ Wrapper for ChromaDB to store and query document embeddings,
 Search for similar chunks when user asks a question
 """
 from openai import OpenAI
-from config import settings
+from backend.config import settings
 import chromadb
 from chromadb.config import Settings as ChromaSettings
 from typing import List, Dict #Labels telling us what data looks like
