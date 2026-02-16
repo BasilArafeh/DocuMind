@@ -9,8 +9,9 @@ from pathlib import Path
 from typing import List, Dict
 from pypdf import PdfReader  #Extract text from PDFs
 from openai import OpenAI
-from config import get_settings
-from config import settings
+from backend.config import get_settings
+from backend.config import settings
+
 
 print(f"DEBUG - LLM_MODEL: {settings.LLM_MODEL}")
 print(f"DEBUG - API_KEY starts with: {settings.OPENAI_API_KEY[:10]}...")
