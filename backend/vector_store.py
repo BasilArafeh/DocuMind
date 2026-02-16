@@ -8,7 +8,8 @@ from config import settings
 import chromadb
 from chromadb.config import Settings as ChromaSettings
 from typing import List, Dict #Labels telling us what data looks like
-from config import get_settings
+from backend.config import settings
+
 
 
 settings = get_settings()
