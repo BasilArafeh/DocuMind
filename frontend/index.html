@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocuMind - AI Document Assistant</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- Citation Modal -->
+    <div id="citationModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Source Content</h3>
+                <button class="modal-close" onclick="closeCitationModal()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body" id="citationContent">
+                <p class="citation-source"></p>
+                <div class="citation-text"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <!-- Logo Section -->
+            <div class="logo-section">
+                <div class="logo-icon">
+                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Brain/Neural Network Logo -->
+                        <defs>
+                            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <circle cx="24" cy="24" r="22" fill="url(#logoGradient)" opacity="0.1"/>
+                        <!-- Brain outline -->
+                        <path d="M16 20C16 16 18 14 20 14C21 14 22 14.5 22.5 15.5C23 14.5 24 14 25 14C27 14 29 16 29 20" stroke="url(#logoGradient)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                        <path d="M16 20C14 22 14 25 16 27C17 28 18.5 28 20 27.5" stroke="url(#logoGradient)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                        <path d="M29 20C31 22 31 25 29 27C28 28 26.5 28 25 27.5" stroke="url(#logoGradient)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                        <path d="M20 27.5C21 29 23 29 24 28.5C25 29 27 29 28 27.5" stroke="url(#logoGradient)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                        <!-- Neural nodes -->
+                        <circle cx="18" cy="18" r="2" fill="#667eea"/>
+                        <circle cx="27" cy="18" r="2" fill="#764ba2"/>
+                        <circle cx="22.5" cy="24" r="2.5" fill="#667eea"/>
+                        <circle cx="18" cy="26" r="1.5" fill="#764ba2"/>
+                        <circle cx="27" cy="26" r="1.5" fill="#667eea"/>
+                        <!-- Document element -->
+                        <rect x="32" y="10" width="10" height="13" rx="1.5" fill="white" opacity="0.9"/>
+                        <line x1="34" y1="13" x2="40" y2="13" stroke="#667eea" stroke-width="1"/>
+                        <line x1="34" y1="16" x2="40" y2="16" stroke="#667eea" stroke-width="1"/>
+                        <line x1="34" y1="19" x2="38" y2="19" stroke="#667eea" stroke-width="1"/>
+                        <circle cx="40" cy="12" r="3" fill="#FFD700"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <h1>DocuMind</h1>
+                    <p>v1.0 • AI Edition</p>
+                </div>
+            </div>
+
+            <!-- Upload Section -->
+            <div class="upload-section">
+                <h3>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    Upload Documents
+                </h3>
+                <div class="upload-area" id="uploadArea">
+                    <input type="file" id="fileInput" multiple accept=".pdf,.txt,.md" hidden>
+                    <div class="upload-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                            <polyline points="13 2 13 9 20 9"></polyline>
+                        </svg>
+                    </div>
+                    <p class="upload-text">Click or drag files here</p>
+                    <span class="file-types">PDF, TXT, MD • Max 25MB</span>
+                </div>
+                <div class="upload-status" id="uploadStatus"></div>
+            </div>
+
+            <!-- Active Documents -->
+            <div class="documents-section">
+                <h3>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                        <polyline points="13 2 13 9 20 9"></polyline>
+                    </svg>
+                    Active Documents
+                </h3>
+                <div id="documentsList" class="documents-list">
+                    <div class="empty-state">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                            <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                            <polyline points="13 2 13 9 20 9"></polyline>
+                        </svg>
+                        <p>No documents uploaded yet</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upload Requirements -->
+            <div class="requirements-box">
+                <h4>Upload Requirements</h4>
+                <ul>
+                    <li><strong>Format:</strong> PDF or TXT only</li>
+                    <li><strong>Max size:</strong> 25MB</li>
+                    <li><strong>Max pages:</strong> 100</li>
+                    <li><strong>Processing:</strong> Local & Secure</li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="main-content">
+            <!-- Chat Header -->
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <h2>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                        Chat Interface
+                    </h2>
+                    <p id="chatStatus">Ready to answer questions</p>
+                </div>
+                <div class="header-actions">
+                    <button class="icon-btn" id="exportChat" title="Export Chat">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                    </button>
+                    <button class="clear-btn" id="clearChat">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="3 6 5 6 21 6"></polyline>
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                        </svg>
+                        Clear Chat
+                    </button>
+                </div>
+            </div>
+
+            <!-- Suggested Questions -->
+            <div class="suggested-questions" id="suggestedQuestions" style="display: none;">
+                <p class="suggested-label">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                    Suggested Questions:
+                </p>
+                <div class="suggested-chips" id="suggestedChips"></div>
+            </div>
+
+            <!-- Chat Messages -->
+            <div class="chat-messages" id="chatMessages">
+                <div class="welcome-message">
+                    <div class="welcome-icon">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                    </div>
+                    <h2>Hello! I'm ready to help you explore your documents.</h2>
+                    <p>Upload documents on the left, then ask me anything about their contents!</p>
+                    <div class="example-questions">
+                        <p><strong>Try asking:</strong></p>
+                        <div class="example-chip">"Summarize the main points"</div>
+                        <div class="example-chip">"What is mentioned about..."</div>
+                        <div class="example-chip">"Compare sections on..."</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Input -->
+            <div class="chat-input-area">
+                <div class="input-container">
+                    <input 
+                        type="text" 
+                        id="queryInput" 
+                        placeholder="Ask a question about your documents..."
+                        disabled
+                        maxlength="500"
+                    >
+                    <button id="sendButton" disabled>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                        Send
+                    </button>
+                </div>
+                <div class="input-meta">
+                    <p class="input-hint">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                        </svg>
+                        DocuMind answers using only your uploaded documents
+                    </p>
+                    <span class="char-counter" id="charCounter">0 / 500</span>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
