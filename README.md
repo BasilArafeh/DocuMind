@@ -4,9 +4,11 @@
 
 [Try Live Demo on Hugging Face](https://huggingface.co/spaces/Basilarafeh/documind) • Accuracy: 73.3% • Avg Response Time: 3.9s
 
-![DocuMind Interface](<img width="1919" height="902" alt="image" src="https://github.com/user-attachments/assets/3f6a070c-b22e-42ea-9850-a7926198ae13" />
-<img width="1919" height="902" alt="image" src="https://github.com/user-attachments/assets/3f6a070c-b22e-42ea-9850-a7926198ae13" />
-)
+![DocuMind Interface](<img width="1919" height="905" alt="image" src="https://github.com/user-attachments/assets/4f4d5a27-1986-4bf1-89f3-7dbf17fc07fb" />
+<img width="1919" height="905" alt="image" src="https://github.com/user-attachments/assets/4f4d5a27-1986-4bf1-89f3-7dbf17fc07fb" />
+)<img width="1600" height="758" alt="image" src="https://github.com/user-attachments/assets/6bd2f1d8-28cb-4ee5-b95a-ebbf302fabaa" />
+<img width="1600" height="758" alt="image" src="https://github.com/user-attachments/assets/6bd2f1d8-28cb-4ee5-b95a-ebbf302fabaa" />
+
 
 ---
 
@@ -58,30 +60,11 @@ Manual document search is time-consuming and inefficient. Existing AI solutions 
 
 ## Performance & Evaluation
 
-I tested DocuMind on 15 questions about transformer architecture using 2 technical documents:
-
-**Overall Results:**
-- Correct answers: 11/15 (73.3%)
-- Average response time: 3.93 seconds
-- Median response time: 4.11 seconds
-
-**Breakdown by difficulty:**
-- Easy questions: 75% (3/4 correct)
-- Medium questions: 100% (6/6 correct)
-- Hard questions: 40% (2/5 correct)
-
-**What works well:**
-- Explaining technical concepts from context
-- Medium-complexity queries (most common real-world use case)
-- Consistent sub-4-second response times
-- Source attribution for answer verification
-
-**Current limitations:**
-- Struggles with exact factual details (author names, specific formulas)
-- Difficulty with comparative analysis requiring synthesis across chunks
-- Complex multi-step reasoning questions need improvement
-
-The full evaluation can be reproduced using `tests/evaluation.py`.
+Tested on 15 technical questions across 2 transformer architecture documents:
+- **73.3% overall accuracy** (11/15 correct) with **3.9s average response time**
+- **100% accuracy on medium-complexity queries** (6/6) - the most common real-world use case
+- Struggles with exact factual recall (author names, formulas) and comparative analysis
+- Full results: Run `tests/evaluation.py` or see `evaluation/evaluation_results.json`
 
 ---
 
@@ -131,4 +114,3 @@ The full evaluation can be reproduced using `tests/evaluation.py`.
 ```bash
 git clone https://github.com/BasilArafeh/DocuMind.git
 cd DocuMind
-
