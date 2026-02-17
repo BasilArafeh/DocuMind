@@ -5,9 +5,6 @@
 [Try Live Demo on Hugging Face](https://huggingface.co/spaces/Basilarafeh/documind) • Accuracy: 73.3% • Avg Response Time: 3.9s
 
 ![DocuMind Interface]<img width="1919" height="911" alt="image" src="https://github.com/user-attachments/assets/7a1fddcd-d0ae-4fca-bac5-9e956c9abf5d" />
-<img width="1919" height="911" alt="image" src="https://github.com/user-attachments/assets/7a1fddcd-d0ae-4fca-bac5-9e956c9abf5d" />
-<img width="1600" height="758" alt="image" src="https://github.com/user-attachments/assets/2929fb42-e40c-464e-a288-24f46d4d5d7b" />
-<img width="1600" height="758" alt="image" src="https://github.com/user-attachments/assets/2929fb42-e40c-464e-a288-24f46d4d5d7b" />
 
 
 
