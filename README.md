@@ -79,8 +79,8 @@ On a benchmark of 15 questions about transformer architecture across 2 technical
 - FastAPI (Python 3.10+)
 
 **AI / ML**
-- OpenAI GPT‑4 for answer generation
-- OpenAI `text-embedding-ada-002` for embeddings
+- OpenAI GPT‑4o-mini for answer generation
+- OpenAI `text-embedding-3-small` for embeddings
 - ChromaDB for vector storage and semantic search
 
 **Frontend**
@@ -105,4 +105,49 @@ On a benchmark of 15 questions about transformer architecture across 2 technical
 ```bash
 git clone https://github.com/BasilArafeh/DocuMind.git
 cd DocuMind
+2.
+Install dependencies:
+bash
+pip install -r backend/requirements.txt
+Configure your OpenAI API key:
+3.
+bash
+# in backend/.env
+OPENAI_API_KEY=your_api_key_here
+Run the backend:
+4.
+bash
+cd backend
+uvicorn main:app --reload
+Open the frontend:
+5.
+Open frontend/index.html in your browser (or serve it with any simple HTTP server)
+
+## Project Structure
+
+```text
+documind/
+├── backend/                     # FastAPI backend and RAG logic
+│   ├── config.py                # Settings and environment configuration
+│   ├── ingestion.py             # Document parsing, cleaning, and chunking
+│   ├── llm_client.py            # Wrapper around OpenAI APIs (LLM + embeddings)
+│   ├── main.py                  # FastAPI app, routes, and dependency wiring
+│   ├── prompts.py               # Prompt templates for answer generation
+│   ├── schemas.py               # Pydantic models for requests/responses
+│   ├── vector_store.py          # ChromaDB integration and retrieval helpers
+│   └── requirements.txt         # Python dependencies for the backend
+├── evaluation/                  # Offline evaluation scripts and results
+│   ├── evaluation.py            # Runs benchmark over documents and questions
+│   ├── evaluation_results.json  
+│   └── test_questions.json      # Benchmark questions used for testing
+├── frontend/                    # Web UI (vanilla JS)
+│   ├── app.js                   # Frontend logic and API calls
+│   ├── index.html               
+│   └── styles.css               
+├── tests/                       
+│   ├── evaluation.py            
+│   └── test_questions.json     
+├── Dockerfile                   # Container image definition
+├── docker-compose.yml           # Local/production service orchestration
+└── README.md                    # Project documentation
 
