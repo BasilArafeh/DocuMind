@@ -1,0 +1,244 @@
+{
+  "summary": {
+    "total_questions": 15,
+    "correct_answers": 11,
+    "accuracy": "73.3%",
+    "avg_response_time": "3.93s",
+    "median_response_time": "4.11s"
+  },
+  "breakdown_by_difficulty": {
+    "easy": {
+      "correct": 3,
+      "total": 4
+    },
+    "medium": {
+      "correct": 6,
+      "total": 6
+    },
+    "hard": {
+      "correct": 2,
+      "total": 5
+    }
+  },
+  "detailed_results": [
+    {
+      "question_id": 1,
+      "question": "What is the main purpose of a transformer?",
+      "difficulty": "easy",
+      "answer": "- The main purpose of a transformer is to learn useful representations of sequences or sets of data-points, as indicated in the abstract by Richard E. Turner.\n- Transformers have driven advances in various fields such as natural language processing, computer vision, and spatio-temporal modeling.\n- They utilize components like multi-head attention and feedforward layers to process input data effectively.\n- Language models built from transformers can leverage wide context windows for predicting upcoming words.\n\nFor further detailed insights, a document focusing specifically on the applications of transformers in various domains would be helpful.",
+      "expected_keywords": [
+        "attention",
+        "sequence",
+        "representation",
+        "neural network"
+      ],
+      "correct": true,
+      "response_time": 4.625359058380127
+    },
+    {
+      "question_id": 2,
+      "question": "What are the three key matrices used in self-attention?",
+      "difficulty": "easy",
+      "answer": "- The three key matrices used in self-attention are:\n  - \\( U_q \\): Used to generate the query vectors.\n  - \\( U_k \\): Used to generate the key vectors.\n  - \\( V_h \\): Used to project the self-attention stages down to the required output dimensionality.\n\nThese matrices are crucial for calculating the attention scores and output in the self-attention mechanism as described in your documents.",
+      "expected_keywords": [
+        "query",
+        "key",
+        "value",
+        "Q",
+        "K",
+        "V"
+      ],
+      "correct": true,
+      "response_time": 4.920086622238159
+    },
+    {
+      "question_id": 3,
+      "question": "Who wrote the paper 'Attention is All You Need'?",
+      "difficulty": "easy",
+      "answer": "I couldn't find information about the author of the paper 'Attention is All You Need' in your knowledge base. A relevant document could be a bibliographic reference or a citation list that includes details about the authors of significant papers in the field of attention mechanisms.",
+      "expected_keywords": [
+        "Vaswani",
+        "2017"
+      ],
+      "correct": false,
+      "response_time": 2.9996883869171143
+    },
+    {
+      "question_id": 4,
+      "question": "What is multi-head attention?",
+      "difficulty": "medium",
+      "answer": "- Multi-head attention involves multiple attention heads that operate in parallel within a transformer model, each with its own parameters.\n- Each head specializes in different aspects of relationships among inputs, allowing the model to capture various linguistic relationships and patterns.\n- The heads use separate query, key, and value matrices (WQi, WKi, WVi) to project inputs into distinct embeddings.\n- The output from each head is concatenated and then reshaped using a linear projection to form the final multi-head attention vector.\n- Multi-head attention is essential in transformer blocks, which also include feedforward layers, residual connections, and normalization layers.\n\nKey references: Equations 8.15-8.20 and the description of transformer blocks on Page 8.",
+      "expected_keywords": [
+        "multiple",
+        "parallel",
+        "heads",
+        "attention",
+        "different"
+      ],
+      "correct": true,
+      "response_time": 5.514748811721802
+    },
+    {
+      "question_id": 5,
+      "question": "How does self-attention compute relationships between tokens?",
+      "difficulty": "medium",
+      "answer": "- Self-attention computes relationships between tokens by attending to all prior tokens up to the current token.\n- For each token \\( x_i \\), it calculates a contextual representation \\( a_i \\) as a weighted sum of prior token representations \\( x_j \\) (for all \\( j \\leq i \\)).\n- The weights \\( \\alpha_{i j} \\) are computed based on the similarity scores obtained through a dot product: \\( score(x_i, x_j) = x_i \\cdot x_j \\).\n- These scores are normalized using softmax to create weights that indicate the relevance of each prior token to the current token.\n- The attention mechanism integrates information from previous tokens, thereby creating a contextualized representation for the current token.\n\n(Uszkoreit, 2017).",
+      "expected_keywords": [
+        "dot product",
+        "similarity",
+        "weighted",
+        "softmax"
+      ],
+      "correct": true,
+      "response_time": 4.517167568206787
+    },
+    {
+      "question_id": 6,
+      "question": "What is the purpose of positional encoding in transformers?",
+      "difficulty": "medium",
+      "answer": "- The purpose of positional encoding in transformers is to incorporate information about the position of tokens in the input sequence.\n- This is done by adding a positional embedding to each word embedding, resulting in a new embedding that maintains the same dimensionality.\n- Positional encoding helps in capturing relationships among positions, making it possible to understand that certain positions are more closely related than others (e.g., position 4 is more related to position 5 than position 17).\n- There are different methods of positional embeddings, including static functions like sine and cosine for handling arbitrary sequence lengths and more complex methods representing relative positions instead of absolute ones.\n\nFor more detailed insights, a document focusing specifically on positional encoding techniques in transformers would be helpful.",
+      "expected_keywords": [
+        "position",
+        "order",
+        "sequence",
+        "location"
+      ],
+      "correct": true,
+      "response_time": 5.3159708976745605
+    },
+    {
+      "question_id": 7,
+      "question": "What is layer normalization and why is it used?",
+      "difficulty": "medium",
+      "answer": "- Layer normalization is a technique applied to the embedding vector of a single token in a transformer model, rather than to the entire transformer layer.\n- It involves calculating the mean (\u00b5) and standard deviation (\u03c3) of the vector elements, normalizing the vector by subtracting the mean and dividing by the standard deviation, resulting in a vector with zero mean and standard deviation of one.\n- The normalized output is adjusted using two learnable parameters, \u03b3 (gain) and \u03b2 (offset).\n- It stabilizes learning by normalizing each token separately, which is simpler and more stable compared to batch normalization.\n- The process allows individual tokens to be processed without interference from others, enhancing model performance (see equations 8.24 and 8.25 for details). \n\nFor further information on layer normalization's applications or comparisons with other methods, documents on machine learning architectures may be helpful.",
+      "expected_keywords": [
+        "normalize",
+        "mean",
+        "standard deviation",
+        "training",
+        "stable"
+      ],
+      "correct": true,
+      "response_time": 5.21399998664856
+    },
+    {
+      "question_id": 8,
+      "question": "What are residual connections in transformers?",
+      "difficulty": "medium",
+      "answer": "- Residual connections in transformers are part of the architecture where the input from the prior layer is passed up to the next layer.\n- The output of different components, including a multi-head attention layer and a feedforward layer, is added to this input.\n- This mechanism allows for effective information flow through stacked transformer blocks, ensuring that each block can utilize both its own processing and the previous layer's output.\n- The continuous use of residual streams is crucial for maintaining dimensionality consistency, allowing for stacking multiple transformer blocks. \n\nFor a deeper understanding of residual connections, a document focused on architectural design principles in neural networks or an in-depth study of transformer components would be helpful.",
+      "expected_keywords": [
+        "skip",
+        "add",
+        "gradient",
+        "identity",
+        "flow"
+      ],
+      "correct": true,
+      "response_time": 4.0118019580841064
+    },
+    {
+      "question_id": 9,
+      "question": "How do transformers handle long-range dependencies?",
+      "difficulty": "hard",
+      "answer": "I couldn't find information about how transformers handle long-range dependencies in your knowledge base. To learn more about this topic, consider looking for documents that discuss the mechanisms of attention in transformers or specific studies on their capability to model long-range relationships in sequences.",
+      "expected_keywords": [
+        "attention",
+        "all",
+        "tokens",
+        "distance",
+        "context"
+      ],
+      "correct": false,
+      "response_time": 2.4065911769866943
+    },
+    {
+      "question_id": 10,
+      "question": "What is the feedforward network in a transformer block?",
+      "difficulty": "medium",
+      "answer": "- The feedforward network (FFN) in a transformer block is a fully-connected 2-layer network, consisting of one hidden layer and two weight matrices.\n- The weights are consistent across each token position but differ from layer to layer.\n- It is common for the dimensionality of the hidden layer (denoted as \\( d_{ff} \\)) to be larger than the model dimensionality \\( d \\). For example, in the original transformer model, \\( d = 512 \\) and \\( d_{ff} = 2048 \\).\n- The computation for the feedforward layer is defined by the equation:  \n  \\( FFN(x_i) = ReLU(x_i W_1 + b_1) W_2 + b_2 \\).\n\nThis information is found on Page 10 of the context provided.",
+      "expected_keywords": [
+        "MLP",
+        "two",
+        "layer",
+        "hidden",
+        "ReLU"
+      ],
+      "correct": true,
+      "response_time": 4.213285684585571
+    },
+    {
+      "question_id": 11,
+      "question": "Why is attention scaled by the square root of dimension?",
+      "difficulty": "hard",
+      "answer": "- Attention is scaled by the square root of the dimensionality of the projected vector to help with numerical stability.\n- This scaling is absorbed into the transformation matrix U for clarity in presentation.\n- The context mentions that while some effects could be handled by normalization in the denominator, asymmetric similarity allows more flexibility.\n\nFor a deeper understanding, a document discussing the implementation details of attention mechanisms or numerical techniques in deep learning might be helpful.",
+      "expected_keywords": [
+        "numerical",
+        "stability",
+        "gradient",
+        "softmax",
+        "large"
+      ],
+      "correct": true,
+      "response_time": 2.9074203968048096
+    },
+    {
+      "question_id": 12,
+      "question": "What is causal masking in transformers?",
+      "difficulty": "hard",
+      "answer": "Causal masking in transformers is a mechanism used during auto-regressive prediction to prevent future tokens from affecting the representations of earlier tokens. This is achieved by modifying the attention matrix to become an upper triangular matrix, which ensures that predictions are made based only on past and present tokens. This allows for causal predictions to be made for the entire sequence in one forward pass through the transformer, thereby accelerating training and inference.\n\nFor more detailed information on this topic, a document focusing specifically on the attention mechanism or the architecture of transformers would be helpful.",
+      "expected_keywords": [
+        "mask",
+        "future",
+        "autoregressive",
+        "upper",
+        "triangular"
+      ],
+      "correct": true,
+      "response_time": 3.4661335945129395
+    },
+    {
+      "question_id": 13,
+      "question": "What is the computational complexity of self-attention?",
+      "difficulty": "hard",
+      "answer": "I couldn't find information about the computational complexity of self-attention in your knowledge base. You might want to look for documents that specifically discuss the performance or complexity analysis of transformer models or self-attention mechanisms.",
+      "expected_keywords": [
+        "quadratic",
+        "N squared",
+        "O(N^2)",
+        "sequence length"
+      ],
+      "correct": false,
+      "response_time": 2.358963966369629
+    },
+    {
+      "question_id": 14,
+      "question": "What are tokens in the context of transformers?",
+      "difficulty": "easy",
+      "answer": "- Tokens in the context of transformers are elements that represent data points in a structured format.\n- They can be arranged into a set or sequence, with each token having its own unique vector representation.\n- Examples of tokens include:\n  - Words or sub-words in a passage of text, where each word is represented by a vector.\n  - Image patches that have been mapped into vectors.\n- Tokens can be collected into a matrix format for processing within the transformer architecture.\n\nFor more detailed explanations on tokens and their roles, a document focusing specifically on the input data format and tokenization methods in transformers would be helpful.",
+      "expected_keywords": [
+        "embeddings",
+        "words",
+        "sub-words",
+        "pieces",
+        "input"
+      ],
+      "correct": true,
+      "response_time": 4.10773229598999
+    },
+    {
+      "question_id": 15,
+      "question": "What is the difference between encoder and decoder transformers?",
+      "difficulty": "hard",
+      "answer": "I couldn't find information about the specific differences between encoder and decoder transformers in your knowledge base. However, you may find useful insights in documents that focus on the architecture and functionality of transformer models, particularly those detailing encoder-decoder attention mechanisms and their applications in tasks like machine translation.",
+      "expected_keywords": [
+        "bidirectional",
+        "causal",
+        "attention",
+        "generation",
+        "understanding"
+      ],
+      "correct": false,
+      "response_time": 2.4105191230773926
+    }
+  ]
+}
